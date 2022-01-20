@@ -29,7 +29,42 @@ class _PasswordScreenState extends State<PasswordScreen> {
             SizedBox(
               height: 40.h,
             ),
-            TextFormField(controller: controllerPin,),
+            SizedBox(
+              width: 125.w,
+              child: PinCodeTextField(
+                showCursor: false,
+                appContext: context,
+                controller: controllerPin,
+                length: 4,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                obscuringWidget: Center(
+                  child: Text(
+                    '●',
+                    style: TextStyle(
+                      color: AppColors.appYellow,
+                      fontSize: 10.sp,
+                    ),
+                  ),
+                ),
+                enableActiveFill: true,
+                pinTheme: PinTheme(
+                  fieldHeight: 20.h,
+                  fieldWidth: 20.w,
+                  borderWidth: 0,
+                  shape: PinCodeFieldShape.circle,
+                  activeColor: AppColors.pinBlack,
+                  selectedColor: AppColors.pinBlack,
+                  inactiveColor: AppColors.pinBlack,
+                  disabledColor: AppColors.pinBlack,
+                  activeFillColor: AppColors.pinBlack,
+                  selectedFillColor: AppColors.pinBlack,
+                  inactiveFillColor: AppColors.pinBlack,
+                  errorBorderColor: AppColors.pinBlack,
+                ),
+                onCompleted: (value) {(value == truePass)?debugPrint("TRUE"):debugPrint("FALSE");},
+                onChanged: (controllerPin) {debugPrint(controllerPin);},
+              ),
+            ),
             SizedBox(
               height: 56.h,
             ),
