@@ -1,5 +1,4 @@
 import 'package:delline/main_navigation.dart';
-import 'package:delline/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

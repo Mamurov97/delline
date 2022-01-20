@@ -11,7 +11,7 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-  TextEditingController controllerPin = TextEditingController();
+  final TextEditingController _pinPutController = TextEditingController();
   String truePass = '0000';
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
               child: PinCodeTextField(
                 showCursor: false,
                 appContext: context,
-                controller: controllerPin,
+                controller: _pinPutController,
                 length: 4,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 obscuringWidget: Center(
@@ -84,7 +84,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          controllerPin.text=controllerPin.text+'1';
+                          _pinPutController.text = '${_pinPutController.text}1';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
                         },
                         child: Container(
                           height: 82.h,
@@ -102,7 +104,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          print(controllerPin.text);
+                          _pinPutController.text = '${_pinPutController.text}2';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
                         },
                         child: Container(
                           height: 82.h,
@@ -119,7 +123,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}3';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -140,7 +148,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}4';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -156,7 +168,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}5';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -172,7 +188,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}6';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -193,7 +213,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}7';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -209,7 +233,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}8';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -225,7 +253,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}9';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -254,7 +286,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          _pinPutController.text = '${_pinPutController.text}0';
+                          _pinPutController.selection = TextSelection.collapsed(
+                              offset: _pinPutController.text.length);
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
@@ -270,7 +306,14 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          if (_pinPutController.text.isNotEmpty) {
+                            _pinPutController.text = _pinPutController.text
+                                .substring(0, _pinPutController.text.length - 1);
+                            _pinPutController.selection = TextSelection.collapsed(
+                                offset: _pinPutController.text.length);
+                          }
+                        },
                         child: Container(
                           height: 82.h,
                           width: 82.w,
