@@ -61,7 +61,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   inactiveFillColor: AppColors.pinBlack,
                   errorBorderColor: AppColors.pinBlack,
                 ),
-                onCompleted: (value) {(value == truePass)?debugPrint("TRUE"):debugPrint("FALSE");},
+                onCompleted: (value) {(value == truePass)?debugPrint("TRUE"):_pinPutController.clear();},
                 onChanged: (controllerPin) {debugPrint(controllerPin);},
               ),
             ),

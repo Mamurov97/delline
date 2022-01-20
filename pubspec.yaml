@@ -15,7 +15,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.1.0
   pin_code_fields: ^7.0.0-nullsafety
-  pinput: ^1.2.0
 
 dev_dependencies:
   flutter_test:
