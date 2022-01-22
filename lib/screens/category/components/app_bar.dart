@@ -20,34 +20,17 @@ AppBar buildAppBar(BuildContext context) {
       fontWeight: FontWeight.w400,
     ),
     title: const Text("Меню"),
-    flexibleSpace: const Image(
-      image: AssetImage('assets/brend_img/wash_machine.png'),
-      fit: BoxFit.cover,
-    ),
     leadingWidth: 30,
-    backgroundColor: Colors.grey.shade50,
+    backgroundColor: AppColors.appBarBlack,
     bottom: PreferredSize(
-      preferredSize: const Size(double.infinity, 40),
+      preferredSize: const Size(double.infinity, 70),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('assets/app_icon/ic_pack_yellow.png'),
-            SizedBox(
-              height: 30.h,
-              width: 309.w,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  filled: true,
-                  suffixIcon: const Icon(Icons.search, color: AppColors.appYellow,),
-                  border: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.appYellow,),),
-                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.appYellow,),),
-                  hintText: "Поиск...",
-                  hintStyle: TextStyle(color: AppColors.appYellow,fontSize: 12.sp),
-                ),
-              ),
-            ),
+            const Icon(Icons.search, color: AppColors.appYellow,),
           ],
         ),
       ),

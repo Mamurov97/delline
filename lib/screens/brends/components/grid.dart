@@ -1,9 +1,10 @@
+import 'package:delline/main_navigation.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-myCard(int index) {
-  List<String> imgList = [
+myCard(int index, BuildContext context) {
+  List<String> _imgList = [
     'samsung',
     'chigo',
     'artel',
@@ -20,15 +21,13 @@ myCard(int index) {
     'canon'
   ];
   return GestureDetector(
-    onTap: () {},
+    onTap: () {Navigator.pushNamed(context, MainNavigationRouteNames.category);},
     child: Container(
-      height: 73.h,
-      width: 157.w,
       decoration: BoxDecoration(
         color: AppColors.cardGrey,
         borderRadius: BorderRadius.circular(8.r),
       ),
-      child: Image.asset('assets/app_img/${imgList[index]}.png'),
+      child: Image.asset('assets/brend_img/${_imgList[index]}.png'),
     ),
   );
 }

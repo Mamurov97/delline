@@ -15,37 +15,35 @@ class BrendScreen extends StatefulWidget {
 class _BrendScreenState extends State<BrendScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: buildAppBar(context),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 26,horizontal: 26),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Бренды',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
+    return Scaffold(
+      appBar: buildAppBar(context),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 26,horizontal: 26),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Бренды',
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: 17.h,),
-                Expanded(
-                  child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 200,
-                          childAspectRatio: 2.3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10),
-                      itemCount: 14,
-                      itemBuilder: (BuildContext ctx, index) {
-                        return myCard(index);
-                      }),
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: 17.h,),
+              Expanded(
+                child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        childAspectRatio: 2.2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10),
+                    itemCount: 14,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return myCard(index, ctx);
+                    }),
+              ),
+            ],
           ),
         ),
       ),
