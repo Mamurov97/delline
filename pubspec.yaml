@@ -34,3 +34,5 @@ flutter:
 
   assets:
     - assets/app_logo/
+    - assets/app_icon/
+    - assets/app_img/

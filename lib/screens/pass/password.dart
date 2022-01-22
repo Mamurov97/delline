@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../main_navigation.dart';
+
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({Key? key}) : super(key: key);
 
@@ -13,6 +15,7 @@ class PasswordScreen extends StatefulWidget {
 class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController _pinPutController = TextEditingController();
   String truePass = '0000';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,8 +64,14 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   inactiveFillColor: AppColors.pinBlack,
                   errorBorderColor: AppColors.pinBlack,
                 ),
-                onCompleted: (value) {(value == truePass)?debugPrint("TRUE"):_pinPutController.clear();},
-                onChanged: (controllerPin) {debugPrint(controllerPin);},
+                onCompleted: (value) {
+                  (value == truePass)
+                      ? Navigator.pushNamed(context, MainNavigationRouteNames.home)
+                      : _pinPutController.clear();
+                },
+                onChanged: (controllerPin) {
+                  debugPrint(controllerPin);
+                },
               ),
             ),
             SizedBox(
@@ -309,9 +318,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         onTap: () {
                           if (_pinPutController.text.isNotEmpty) {
                             _pinPutController.text = _pinPutController.text
-                                .substring(0, _pinPutController.text.length - 1);
-                            _pinPutController.selection = TextSelection.collapsed(
-                                offset: _pinPutController.text.length);
+                                .substring(
+                                    0, _pinPutController.text.length - 1);
+                            _pinPutController.selection =
+                                TextSelection.collapsed(
+                                    offset: _pinPutController.text.length);
                           }
                         },
                         child: Container(
@@ -319,11 +330,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                           width: 82.w,
                           color: AppColors.appBlack,
                           child: Center(
-                            child: Icon(
-                              Icons.backspace_outlined,
-                              color: AppColors.appYellow,
-                              size: 18.sp,
-                            ),
+                            child: Image.asset('assets/app_icon/ic_delete.png'),
                           ),
                         ),
                       ),
