@@ -38,6 +38,7 @@ AppBar buildAppBar(BuildContext context) {
               height: 30.h,
               width: 309.w,
               child: TextFormField(
+                textAlignVertical: const TextAlignVertical(y:0.6),
                 decoration: InputDecoration(
                   filled: true,
                   suffixIcon: const Icon(Icons.search, color: AppColors.appYellow,),

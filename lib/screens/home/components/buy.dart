@@ -111,7 +111,7 @@ class BuyWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 0.3),
                           decoration: InputDecoration(
                             suffixIcon: GestureDetector(
                               onTap: () {
@@ -120,6 +120,7 @@ class BuyWidget extends StatelessWidget {
                               child: const Icon(
                                 Icons.arrow_drop_down,
                                 size: 18,
+                                color: AppColors.appBlack,
                               ),
                             ),
                             filled: true,
@@ -162,7 +163,12 @@ class BuyWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 1),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                           decoration: InputDecoration(
                             filled: true,
                             enabledBorder: OutlineInputBorder(

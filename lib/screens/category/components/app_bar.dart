@@ -4,6 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
+    flexibleSpace: const Image(
+      image: AssetImage('assets/brend_img/wash_machine.png'),
+      fit: BoxFit.cover,
+    ),
     leading: IconButton(
       icon: const Icon(
         Icons.arrow_back,
@@ -23,7 +27,7 @@ AppBar buildAppBar(BuildContext context) {
     leadingWidth: 30,
     backgroundColor: AppColors.appBarBlack,
     bottom: PreferredSize(
-      preferredSize: const Size(double.infinity, 70),
+      preferredSize: const Size(double.infinity, 40),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Row(

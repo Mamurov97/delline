@@ -11,6 +11,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _controllerLogin = TextEditingController();
+  final TextEditingController _controllerPass = TextEditingController();
+  bool _eyeTap = false;
+  final String _login = 'admin';
+  final String _pass = 'admin';
+  String _isLogin = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +42,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 35.h,
                 width: 281.w,
                 child: TextField(
+                  textAlignVertical: const TextAlignVertical(y: 1),
+                  style:TextStyle(
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.appBlack,
+                  ),
+                  controller: _controllerLogin,
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.phone_outlined,
@@ -62,17 +76,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 35.h,
                 width: 281.w,
                 child: TextField(
-                  obscureText: true,
+                  textAlignVertical: const TextAlignVertical(y: 1),
+                  style:TextStyle(
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.appBlack,
+                  ),
+                  controller: _controllerPass,
+                  obscureText: !_eyeTap,
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.lock_outline,
                       size: 18.sp,
                       color: AppColors.appGrey,
                     ),
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye_outlined,
-                      size: 18.sp,
-                      color: AppColors.appGrey,
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _eyeTap = !_eyeTap;
+                        });
+                      },
+                      child: Icon(
+                        (_eyeTap)
+                            ? Icons.remove_red_eye_outlined
+                            : Icons.remove_red_eye,
+                        size: 18.sp,
+                        color: AppColors.appGrey,
+                      ),
                     ),
                     filled: true,
                     border: OutlineInputBorder(
@@ -94,7 +124,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 187.w,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, MainNavigationRouteNames.pass);
+                    setState(() {
+                      if (_controllerPass.text == _pass &&
+                          _controllerLogin.text == _login) {
+                        _isLogin = 'Hush kelibsiz!!!';
+                        Navigator.pushNamed(
+                            context, MainNavigationRouteNames.pass);
+                      } else {
+                        _isLogin = 'Login yoki Parol xato!!!';
+                        _controllerLogin.clear();
+                        _controllerPass.clear();
+                      }
+                    });
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(
@@ -110,6 +151,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     style:
                         TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
                   ),
+                ),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                _isLogin,
+                style: TextStyle(
+                  color: AppColors.appYellow,
+                  fontSize: 24.sp,
                 ),
               ),
             ],
