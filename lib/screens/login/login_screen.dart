@@ -1,22 +1,39 @@
-import 'package:delline/main_navigation.dart';
+import 'package:delline/screens/login/login_bloc/login_bloc.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  static Widget screen() => BlocProvider(
+        create: (context) => LoginBloc(context),
+        child: const LoginScreen(),
+      );
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late LoginBloc bloc;
+
+  @override
+  void initState() {
+    bloc = BlocProvider.of<LoginBloc>(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bloc.close();
+    super.dispose();
+  }
+
   final TextEditingController _controllerLogin = TextEditingController();
   final TextEditingController _controllerPass = TextEditingController();
   bool _eyeTap = false;
-  final String _login = 'admin';
-  final String _pass = 'admin';
-  String _isLogin = '';
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 281.w,
                 child: TextField(
                   textAlignVertical: const TextAlignVertical(y: 1),
-                  style:TextStyle(
+                  style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.appBlack,
@@ -77,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 281.w,
                 child: TextField(
                   textAlignVertical: const TextAlignVertical(y: 1),
-                  style:TextStyle(
+                  style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.appBlack,
@@ -124,18 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 187.w,
                 child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      if (_controllerPass.text == _pass &&
-                          _controllerLogin.text == _login) {
-                        _isLogin = 'Hush kelibsiz!!!';
-                        Navigator.pushNamed(
-                            context, MainNavigationRouteNames.pass);
-                      } else {
-                        _isLogin = 'Login yoki Parol xato!!!';
-                        _controllerLogin.clear();
-                        _controllerPass.clear();
-                      }
-                    });
+                    bloc.add(ButtonPressedEvent(logController: _controllerLogin, passController: _controllerPass,));
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(
@@ -151,16 +157,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     style:
                         TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 15.h,
-              ),
-              Text(
-                _isLogin,
-                style: TextStyle(
-                  color: AppColors.appYellow,
-                  fontSize: 24.sp,
                 ),
               ),
             ],

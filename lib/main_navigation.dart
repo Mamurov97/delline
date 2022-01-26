@@ -13,11 +13,11 @@ static const brends = '/brends';
 static const category = '/category';
 }
 class MainNavigation{
-String initialRoute () => MainNavigationRouteNames.login;
+String initialRoute () => MainNavigationRouteNames.home;
 
 final routes = <String, Widget Function(BuildContext)>{
-MainNavigationRouteNames.login:(context) => const LoginScreen(),
-MainNavigationRouteNames.pass:(context) => const PasswordScreen(),
+MainNavigationRouteNames.login:(context) => LoginScreen.screen(),
+MainNavigationRouteNames.pass:(context) => PasswordScreen.screen(),
 MainNavigationRouteNames.home:(context) => const HomeScreen(),
 MainNavigationRouteNames.brends:(context) => const BrendScreen(),
 MainNavigationRouteNames.category:(context) => const CategoryScreen(),

@@ -1,21 +1,40 @@
 import 'package:delline/screens/pass/components/num_pad.dart';
+import 'package:delline/screens/pass/pass_bloc/pass_bloc.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../main_navigation.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({Key? key}) : super(key: key);
+
+  static Widget screen() => BlocProvider(
+        create: (context) => PassBloc(context),
+        child: const PasswordScreen(),
+      );
 
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
+  late PassBloc bloc;
+
+  @override
+  void initState() {
+    bloc = BlocProvider.of<PassBloc>(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bloc.close();
+    super.dispose();
+  }
+
   final TextEditingController _pinPutController = TextEditingController();
-  String truePass = '0000';
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +85,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     errorBorderColor: AppColors.pinBlack,
                   ),
                   onCompleted: (value) {
-                    (value == truePass)
-                        ? Navigator.pushNamed(
-                            context, MainNavigationRouteNames.home)
-                        : _pinPutController.clear();
+                    bloc.add(
+                        PassCompileEvent(passController: _pinPutController));
                   },
-                  onChanged: (controllerPin) {
-                    debugPrint(controllerPin);
-                  },
+                  onChanged: (controllerPin) {},
                 ),
               ),
               SizedBox(
