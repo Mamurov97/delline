@@ -218,6 +218,7 @@ class BuyWidget extends StatelessWidget {
                       ),
                       MaterialButton(
                         onPressed: () {
+                          Navigator.pop(context);
                           Navigator.pushNamed(
                               context, MainNavigationRouteNames.brends);
                         },

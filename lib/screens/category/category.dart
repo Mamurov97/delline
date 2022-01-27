@@ -1,3 +1,4 @@
+import 'package:delline/data/brends_model.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,7 +6,9 @@ import 'components/app_bar.dart';
 import 'components/grid.dart';
 
 class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({Key? key}) : super(key: key);
+  final int? brendId;
+
+  const CategoryScreen(this.brendId, {Key? key}) : super(key: key);
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
@@ -27,7 +30,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               Row(
                 children: [
                   Text(
-                    'Samsung',
+                    '${Brends.brandMap.values.toList()[widget.brendId!]}',
                     style: TextStyle(
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
@@ -49,20 +52,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     width: 8.w,
                   ),
                   Text(
-                    'Холодильники',
+                    '${Brends.brandMap.values.toList()[widget.brendId!]}',
                     style: TextStyle(
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   const Spacer(),
-                  GestureDetector(
-                    onTap: () {
+                  IconButton(
+                    onPressed: () {
                       setState(() {
                         _isGrid = !_isGrid;
                       });
                     },
-                    child: SizedBox(
+                    icon: SizedBox(
                       height: 15.h,
                       width: 17.w,
                       child: (_isGrid)
@@ -76,27 +79,24 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 height: 17.h,
               ),
               Expanded(
-                child: (_isGrid)
-                    ? GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                child: GridView.builder(
+                  gridDelegate: (!_isGrid)
+                      ? const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1,
+                          crossAxisSpacing: 20,
+                          mainAxisExtent: 130,
+                        )
+                      : const SliverGridDelegateWithMaxCrossAxisExtent(
                           maxCrossAxisExtent: 110,
                           childAspectRatio: 0.7,
                           crossAxisSpacing: 20,
                         ),
-                        itemCount: 12,
-                        itemBuilder: (BuildContext ctx, index) {
-                          return myCard(index, ctx);
-                        })
-                    : ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
-                        itemBuilder: (BuildContext context, int index) =>
-                            Container(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: myCard(index, context),
-                        ),
-                      ),
+                  itemCount: 12,
+                  scrollDirection: (!_isGrid)?Axis.horizontal:Axis.vertical,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return MyCard(index);
+                  },
+                ),
               ),
             ],
           ),
