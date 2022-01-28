@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:delline/main_navigation.dart';
+import 'package:delline/screens/brends/brends.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -157,8 +157,7 @@ class _GraphWidgetState extends State<GraphWidget> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, MainNavigationRouteNames.brends);
+                          Navigator.push(context, MaterialPageRoute(builder:(context)=> BrendScreen.screen()));
                         },
                         height: 28.h,
                         minWidth: 104.w,

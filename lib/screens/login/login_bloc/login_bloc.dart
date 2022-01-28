@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:delline/main_navigation.dart';
+import 'package:delline/screens/pass/password.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -22,7 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _buttonPressed(ButtonPressedEvent event) async* {
     if(event.passController.text == pass && event.logController.text == log){
-      Navigator.pushNamed(context, MainNavigationRouteNames.home);
+      Navigator.push(context, MaterialPageRoute(builder:(context)=> PasswordScreen.screen()));
     }else{
       event.passController.clear();
       event.logController.clear();

@@ -1,12 +1,13 @@
 import 'dart:ui';
 
-import 'package:delline/main_navigation.dart';
+import 'package:delline/screens/brends/brends.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuyWidget extends StatelessWidget {
   const BuyWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -114,9 +115,7 @@ class BuyWidget extends StatelessWidget {
                           textAlignVertical: const TextAlignVertical(y: 0.3),
                           decoration: InputDecoration(
                             suffixIcon: GestureDetector(
-                              onTap: () {
-
-                              },
+                              onTap: () {},
                               child: const Icon(
                                 Icons.arrow_drop_down,
                                 size: 18,
@@ -219,8 +218,10 @@ class BuyWidget extends StatelessWidget {
                       MaterialButton(
                         onPressed: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(
-                              context, MainNavigationRouteNames.brends);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BrendScreen.screen()));
                         },
                         height: 28.h,
                         minWidth: 104.w,

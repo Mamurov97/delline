@@ -16,6 +16,8 @@ dependencies:
   flutter_screenutil: ^5.1.0
   pin_code_fields: ^7.0.0-nullsafety
   flutter_bloc: ^7.2.0
+  flutter_rating_bar: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +40,4 @@ flutter:
     - assets/app_icon/
     - assets/brend_img/
     - assets/category_img/
+    - assets/card_images/

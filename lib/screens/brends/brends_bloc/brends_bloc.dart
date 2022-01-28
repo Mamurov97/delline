@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:delline/data/brends_model.dart';
 import 'package:delline/screens/category/category.dart';
+import 'package:delline/screens/new_category/category_page.dart';
 import 'package:flutter/material.dart';
 
 part 'brends_event.dart';
@@ -38,7 +39,7 @@ class BrendsBloc extends Bloc<BrendsEvent, BrendsState> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CategoryScreen(event.index,),
+        builder: (context) => CategoryPage(title: event.index.toString()),
       ),
     );
   }

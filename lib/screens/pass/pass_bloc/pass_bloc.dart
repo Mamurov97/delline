@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:delline/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../main_navigation.dart';
+import 'package:flutter/material.dart';
 
 part 'pass_event.dart';
 part 'pass_state.dart';
@@ -20,7 +20,7 @@ class PassBloc extends Bloc<PassEvent, PassState> {
   Stream<PassState> _passEventState(PassCompileEvent event) async* {
     String truePass = '0000';
     if(event.passController.text == truePass){
-      Navigator.pushNamed(context, MainNavigationRouteNames.home);
+      Navigator.push(context, MaterialPageRoute(builder:(context)=> const HomeScreen()));
     }else{
       event.passController.clear();
     }
