@@ -1,4 +1,3 @@
-import 'package:delline/screens/home/home.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,10 +12,7 @@ AppBar buildAppBar(BuildContext context) {
         size: 20,
       ),
       onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const HomeScreen()));
+        Navigator.pop(context);
       },
     ),
     titleTextStyle: TextStyle(
@@ -24,7 +20,7 @@ AppBar buildAppBar(BuildContext context) {
       fontSize: 13.sp,
       fontWeight: FontWeight.w400,
     ),
-    title: const Text("Меню"),
+    title: const Text("Бренды"),
     flexibleSpace: Image.asset(
       'assets/brend_img/wash_machine.png',
       fit: BoxFit.cover,

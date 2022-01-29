@@ -1,5 +1,5 @@
 import 'package:delline/data/brends_model.dart';
-import 'package:delline/utils/app_colors.dart';
+import 'package:delline/screens/new_category/components/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +16,8 @@ class CategoryPage extends StatefulWidget {
   _CategoryPageState createState() => _CategoryPageState();
 }
 
-const textStyle = TextStyle(color: Color(0xffB5B5B5), fontSize: 10);
-const categoryTextStyle = TextStyle(color: Color(0xff2d2d2d), fontSize: 10);
+var textStyle = TextStyle(color:const Color(0xffB5B5B5), fontSize: 10.sp);
+var categoryTextStyle = TextStyle(color:const Color(0xff2d2d2d), fontSize: 10.sp);
 
 class _CategoryPageState extends State<CategoryPage> {
   final Color subtitleColor = const Color(0xffA3A3A3);
@@ -30,61 +30,16 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(context),
       body: Column(
         children: [
-          Container(
-            height: 137.h,
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(1),
-              image: const DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  'assets/brend_img/wash_machine.png',
-                ),
-              ),
-            ),
-            child: Container(
-              color: Colors.black.withOpacity(0.7),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            size: 22,
-                            color: AppColors.appYellow,
-                          ),
-                        ),
-                        const Text(
-                          'Бренды',
-                          style: TextStyle(
-                              color: AppColors.appYellow, fontSize: 13),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
           Row(
             children: [
               Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(text: '    ${widget.title}', style: textStyle),
-                    const TextSpan(text: '     Категории', style: textStyle),
+                    TextSpan(text: '     Категории', style: textStyle),
                   ],
                 ),
               ),
@@ -95,7 +50,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     activeColor = !activeColor;
                   });
                 },
-                icon: activeColor
+                icon: !activeColor
                     ? Image.asset('assets/app_icon/ic_drawer.png',height: 17.h, width: 15.w,)
                     : Image.asset('assets/app_icon/ic_catalog.png',height: 17.h, width: 15.w,),
               ),
@@ -151,7 +106,7 @@ class _CategoryPageState extends State<CategoryPage> {
       children: [
         ConstrainedBox(
             constraints: BoxConstraints(
-                maxHeight: 160,
+                maxHeight: 160.h,
                 maxWidth: MediaQuery.of(context).size.width * 100),
             child: CategoriesGridHorizontal(
               activeColor: activeColor,
@@ -160,9 +115,9 @@ class _CategoryPageState extends State<CategoryPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'Холодельники',
-              style: TextStyle(color: Colors.black, fontSize: 13),
+              style: TextStyle(color: Colors.black, fontSize: 13.sp),
             ),
             Expanded(child: Container()),
             const Text(
@@ -178,8 +133,8 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
         ConstrainedBox(
           constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height / 1.9,
-              maxWidth: MediaQuery.of(context).size.width / 1.1),
+              maxHeight: 420.h,
+              maxWidth: 341.w),
           child: categoriesCardGridHorizontal(context),
         ),
       ],
@@ -187,4 +142,4 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 }
 
-///
+

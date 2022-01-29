@@ -1,3 +1,4 @@
+import 'package:delline/data/brends_model.dart';
 import 'package:delline/screens/brends/brends_bloc/brends_bloc.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class _BrendScreenState extends State<BrendScreen> {
                     itemCount: state.brendList.length,
                     itemBuilder: (BuildContext ctx, index) {
                       return InkWell(
-                        onTap: () => bloc.add(ItemPressed(index: index)),
+                        onTap: () => bloc.add(ItemPressed(title: Brends.brandMap.values.toList()[index])),
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.cardGrey,

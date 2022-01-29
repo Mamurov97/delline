@@ -1,12 +1,14 @@
 import 'package:delline/screens/home/components/buy.dart';
 import 'package:delline/screens/home/components/graph.dart';
 import 'package:delline/screens/home/components/pay.dart';
+import 'package:delline/screens/home/components/setting.dart';
+import 'package:delline/screens/home/components/share.dart';
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
-   const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -66,6 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                SizedBox(
+                                  width: 25.w,
+                                ),
                                 Image.asset(
                                   'assets/app_icon/ic_pack.png',
                                   height: 28.h,
@@ -75,10 +80,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: 8.w,
                                 ),
                                 Text(
-                                  'Заказать',
+                                  'Заказы',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12.sp,
+                                  ),
+                                ),
+                                const Spacer(),
+                                Container(
+                                  height: 12.h,
+                                  width: 12.w,
+                                  color: Colors.black,
+                                  child: const Text(
+                                    '2',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: AppColors.appYellow),
                                   ),
                                 ),
                               ],
@@ -104,6 +122,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                SizedBox(
+                                  width: 24.w,
+                                ),
                                 Image.asset(
                                   'assets/app_icon/ic_pay.png',
                                   height: 28.h,
@@ -119,6 +140,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontSize: 12.sp,
                                   ),
                                 ),
+                                const Spacer(),
+                                Container(
+                                  height: 12.h,
+                                  width: 12.w,
+                                  color: Colors.black,
+                                  child: const Text(
+                                    '2',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: AppColors.appYellow),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -129,42 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     width: 4.w,
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 91.h,
-                      width: 126.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.appYellow,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(8.r),
-                          bottomRight: Radius.circular(8.r),
-                        ),
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              'assets/app_icon/ic_share.png',
-                              height: 28.h,
-                              width: 23.w,
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              'Отправить',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  const ShareWidget(),
                 ],
               ),
               SizedBox(
@@ -173,39 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 91.h,
-                      width: 118.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.appYellow,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              'assets/app_icon/ic_settings.png',
-                              height: 28.h,
-                              width: 23.w,
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              'Настройка',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  const SettingWidget(),
                   SizedBox(
                     width: 20.w,
                   ),

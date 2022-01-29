@@ -1,5 +1,6 @@
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'element_card_widget_in_hero.dart';
 
@@ -80,14 +81,14 @@ class _CardGridWidgetState extends State<CardGridWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(8)),
+          color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
       child: Column(
         children: [
           Expanded(child: Container()),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            width: MediaQuery.of(context).size.width / 3,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+            width: 115.w,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -95,32 +96,32 @@ class _CardGridWidgetState extends State<CardGridWidget> {
                 Image.asset('${widget.image}'),
                 Text(
                   '${widget.title}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.black,
-                    fontSize: 11,
+                    fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
                   '${widget.description}',
-                  style: const TextStyle(
-                    color: Color(0xff858585),
-                    fontSize: 7,
+                  style: TextStyle(
+                    color: const Color(0xff858585),
+                    fontSize: 7.sp,
                   ),
                 ),
                 Text(
                   '${widget.price} сум',
-                  style: const TextStyle(
-                      fontSize: 10,
+                  style: TextStyle(
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xff212121)),
+                      color:const Color(0xff212121)),
                 ),
               ],
             ),
           ),
           Expanded(child: Container()),
           InkWell(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             onTap: () {
               for (int i = 0; i < cardList.length; i++) {
                 cardList[i].isSelected = true;
@@ -135,11 +136,11 @@ class _CardGridWidgetState extends State<CardGridWidget> {
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 15),
               alignment: Alignment.bottomCenter,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.appYellow,
                 borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(8),
-                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8.r),
+                  bottomLeft: Radius.circular(8.r),
                 ),
               ),
               child: const Text('Узнать больше'),

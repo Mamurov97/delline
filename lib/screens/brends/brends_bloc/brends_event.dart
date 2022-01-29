@@ -6,7 +6,7 @@ abstract class BrendsEvent {}
 class LaunchEvent extends BrendsEvent {}
 
 class ItemPressed extends BrendsEvent {
-  final int index;
+  final String title;
 
-  ItemPressed({required this.index});
+  ItemPressed({required this.title});
 }

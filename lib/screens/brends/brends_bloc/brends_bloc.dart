@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:delline/data/brends_model.dart';
-import 'package:delline/screens/category/category.dart';
 import 'package:delline/screens/new_category/category_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,7 @@ class BrendsBloc extends Bloc<BrendsEvent, BrendsState> {
 
 
   @override
-  Stream<BrendsState> mapEventToState(BrendsEvent event) async* {
+  Stream<BrendsState> mapEventToState(BrendsEvent event) async*{
     if (event is LaunchEvent) {
       yield* _eventLaunch(event);
     } else if (event is ItemPressed) {
@@ -39,7 +38,7 @@ class BrendsBloc extends Bloc<BrendsEvent, BrendsState> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CategoryPage(title: event.index.toString()),
+        builder: (context) => CategoryPage(title: event.title),
       ),
     );
   }

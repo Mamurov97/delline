@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PayWidget extends StatelessWidget {
   const PayWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -109,12 +110,15 @@ class PayWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 1),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                           decoration: InputDecoration(
                             suffixIcon: GestureDetector(
-                              onTap: () {
-
-                              },
+                              onTap: () {},
                               child: const Icon(
                                 Icons.arrow_drop_down,
                                 size: 18,
@@ -160,7 +164,12 @@ class PayWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 1),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                           decoration: InputDecoration(
                             filled: true,
                             enabledBorder: OutlineInputBorder(
@@ -202,7 +211,12 @@ class PayWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 1),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                           decoration: InputDecoration(
                             filled: true,
                             enabledBorder: OutlineInputBorder(
@@ -244,7 +258,12 @@ class PayWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          showCursor: false,
+                          textAlignVertical: const TextAlignVertical(y: 1),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                           decoration: InputDecoration(
                             filled: true,
                             enabledBorder: OutlineInputBorder(

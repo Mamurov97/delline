@@ -5,14 +5,19 @@ import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuyWidget extends StatelessWidget {
+class BuyWidget extends StatefulWidget {
   const BuyWidget({Key? key}) : super(key: key);
 
+  @override
+  State<BuyWidget> createState() => _BuyWidgetState();
+}
+
+class _BuyWidgetState extends State<BuyWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _asyncInputDialog(context);
+        _asyncInputDialog(context, _BuyWidgetState());
       },
       child: Container(
         height: 91.h,
@@ -47,7 +52,7 @@ class BuyWidget extends StatelessWidget {
     );
   }
 
-  Future _asyncInputDialog(BuildContext context) async {
+  Future _asyncInputDialog(BuildContext context, State state) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -112,16 +117,14 @@ class BuyWidget extends StatelessWidget {
                         width: 246.w,
                         height: 19.h,
                         child: TextFormField(
-                          textAlignVertical: const TextAlignVertical(y: 0.3),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlignVertical: const TextAlignVertical(y: 1),
                           decoration: InputDecoration(
-                            suffixIcon: GestureDetector(
-                              onTap: () {},
-                              child: const Icon(
-                                Icons.arrow_drop_down,
-                                size: 18,
-                                color: AppColors.appBlack,
-                              ),
-                            ),
+                            suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black, size: 20,),
                             filled: true,
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(

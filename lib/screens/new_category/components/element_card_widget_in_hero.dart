@@ -1,6 +1,7 @@
 import 'package:delline/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'card_grid_horizontal.dart';
 
 class CardElementWidgetInHero extends StatefulWidget {
@@ -17,8 +18,8 @@ class _CardElementWidgetInHeroState extends State<CardElementWidgetInHero> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: 40.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,24 +31,31 @@ class _CardElementWidgetInHeroState extends State<CardElementWidgetInHero> {
                   children: [
                     IconButton(
                         onPressed: () => Navigator.pop(context),
-                        icon: const Icon(Icons.arrow_back,size: 22,color: AppColors.appBlack,)),
-                    const Text(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          size: 22,
+                          color: AppColors.appBlack,
+                        )),
+                    Text(
                       'Бренды',
-                      style: TextStyle(color: Color(0xff2d2d2d), fontSize: 13),
+                      style: TextStyle(
+                          color: const Color(0xff2d2d2d), fontSize: 13.sp),
                     ),
                     // Expanded(child: Card()),
                   ],
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14),
-                  child: Image.asset('assets/images/icons/poopup_menu.png'))
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: Image.asset('assets/app_icon/ic_info.png'),
+              ),
             ],
           ),
           ConstrainedBox(
             constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height / 1.2,
-                maxWidth: MediaQuery.of(context).size.width / 1.1),
+              maxHeight: 677.h,
+              maxWidth: 341.w,
+            ),
             child: ListView.builder(
               itemCount: 1,
               itemBuilder: (context, index) => Hero(
@@ -66,23 +74,23 @@ class _CardElementWidgetInHeroState extends State<CardElementWidgetInHero> {
       floatingActionButton: ElevatedButton(
         style: ButtonStyle(
             maximumSize: MaterialStateProperty.all(
-              const Size(324, 47),
+              Size(324.w, 47.h),
             ),
             backgroundColor: MaterialStateProperty.all(AppColors.appYellow)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 13.0),
+             Padding(
+              padding: const EdgeInsets.symmetric(vertical: 13.0),
               child: Text(
                 'Добавить в корзину',
-                style: TextStyle(color: Color(0xff212121), fontSize: 16),
+                style: TextStyle(color: const Color(0xff212121), fontSize: 16.sp),
               ),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: 10.w,
             ),
-            Image.asset('assets/images/icons/favorite icon.png')
+            Image.asset('assets/app_icon/ic_pack.png')
           ],
         ),
         onPressed: () {},
@@ -121,9 +129,8 @@ class _CardGridElementWidgetState extends State<CardGridElementWidget> {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8)),
-              height: 400,
+                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
+              height: 400.h,
               width: double.infinity,
               child: Image.asset(
                 '${widget.image}',
