@@ -31,39 +31,41 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: '    ${widget.title}', style: textStyle),
-                    TextSpan(text: '     Категории', style: textStyle),
-                  ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: '    ${widget.title}', style: textStyle),
+                      TextSpan(text: '     Категории', style: textStyle),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(child: Container()),
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    activeColor = !activeColor;
-                  });
-                },
-                icon: !activeColor
-                    ? Image.asset('assets/app_icon/ic_drawer.png',height: 17.h, width: 15.w,)
-                    : Image.asset('assets/app_icon/ic_catalog.png',height: 17.h, width: 15.w,),
-              ),
-            ],
-          ),
-          ConstrainedBox(
-              constraints: BoxConstraints(
-                  maxHeight: 609.h,
-                  maxWidth: 360.w),
-              child: activeColor
-                  ? isGridViewHorizontal(context)
-                  : categoriesGrid(context)),
-        ],
+                Expanded(child: Container()),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      activeColor = !activeColor;
+                    });
+                  },
+                  icon: !activeColor
+                      ? Image.asset('assets/app_icon/ic_drawer.png',height: 17.h, width: 15.w,)
+                      : Image.asset('assets/app_icon/ic_catalog.png',height: 17.h, width: 15.w,),
+                ),
+              ],
+            ),
+            ConstrainedBox(
+                constraints: BoxConstraints(
+                    maxHeight: 609.h,
+                    maxWidth: 360.w),
+                child: activeColor
+                    ? isGridViewHorizontal(context)
+                    : categoriesGrid(context)),
+          ],
+        ),
       ),
     );
   }
